@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+$sp: 400px;
+
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+.accordion-wrapper {
+  width: 50%;
+  position: relative;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 1rem 0;
+  height: 20rem;
+  .accordion-header {
+    padding: 1rem;
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: 10px;
+  }
+  .accordion-trigger {
+    position: absolute;
+    right: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.3rem;
+    color: #fff;
+    display: inline;
+    &::after {
+      content: "-";
+    }
+  }
+  @include sp {
+    width: 100%;
+  }
+}
+.accordion-content {
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="accordion.min.css">
+  <script src="./tinymce/tinymce.min.js"></script> 
+  <!-- NOTE: you have to download above file. -->
+  <script src="accordion.js"></script>
+  <title>Tiny MCE Accordion Demo</title>
+</head>
+<body>
+  
+  <textarea id="mainText"></textarea>
+  <button type="submit" id="submitButton">Use accordion, then click here!</button>
+  <div id="previewField"></div>
+
+  <script>
+    let button = document.getElementById("submitButton");
+
+    button.addEventListener("click", () => {
+      let field = document.getElementById("previewField");
+
+      field.innerHTML = tinymce.activeEditor.getContent();
+      let accordionTriggerC = document.getElementsByClassName('accordion-trigger');
+      ProcessingManager();
+      
+    });
+    
+    tinymce.init({
+      height: 500,
+      selector: "textarea",
+      plugins: "accordion",
+      toolbar: "accordion",
+      content_css: "accordion_fortiny.min.css",
+    });
+  </script>
+</body>
+</html>
